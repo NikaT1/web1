@@ -19,6 +19,10 @@
             border-spacing: 10px;
         }
 
+        #body-table {
+            table-layout: fixed;
+        }
+
         #imagine {
             width: 210px;
             height: 210px;
@@ -91,10 +95,6 @@
             vertical-align: middle;
         }
 
-        /*#result-table {*/
-        /*    table-layout: fixed;*/
-        /*}*/
-
         .button {
             font-family: cursive;
             font-weight: 700;
@@ -130,6 +130,7 @@
 
         .errorY {
             border-color: red;
+            background-color: rgba(234, 111, 145, 0.97);
         }
 
         #imagine3 {
@@ -147,6 +148,12 @@
             text-align: center;
             border: 4px solid rgba(217, 185, 230, 0.6);
             font-size: 20px;
+        }
+
+        #x-table  {
+            padding: 0;
+            margin: 0;
+            table-layout: fixed;
         }
 
         #selectR {
@@ -168,6 +175,11 @@
         #result-div {
             overflow-x: auto;
             height: 300px;
+            width: 100%;
+        }
+
+        #result-td {
+            width: 50%;
         }
 
     </style>
@@ -215,7 +227,7 @@
                                 <td>
                                     <img id="imagine3" src="pic3.png" alt="Милый хомячок"/>
                                 </td>
-                                <td rowspan="2" class="background">
+                                <td rowspan="2" class="background" id="result-td">
                                     <div id="result-div">
                                         <table id="result-table" class="result-style">
                                             <tr>
@@ -235,8 +247,8 @@
                                     <table id="numbers-table" class="background">
                                         <tr class="numbers">
                                             <td>X:</td>
-                                            <td colspan="2">
-                                                <table>
+                                            <td colspan="6">
+                                                <table id = "x-table">
                                                     <tr>
                                                         <td>
                                                             <label> <input name="xRadio" type="radio" value="-3"
