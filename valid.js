@@ -17,6 +17,14 @@ $(document).ready(function(){
         let param_y;
         let param_r;
         let timeZone = new Date();
+
+        function drawCoord() {
+            let coordX = 80/param_r*param_x + 100;
+            let coordY = -80/param_r*param_y + 100;
+            $("#coord").attr("cx", coordX);
+            $("#coord").attr("cy", coordY);
+        }
+
         function checkY() {
             let line = $("#inputY").val();
             line = line.replace(",",".");
@@ -50,6 +58,7 @@ $(document).ready(function(){
         }
 
         if (checkY() && checkX() && checkR()) {
+            drawCoord();
             $.ajax({
                 url: "script.php",
                 method: "GET",
