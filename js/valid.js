@@ -1,56 +1,39 @@
-function madeLight() {
-    $("body").removeClass('dark-body');
-    $("#background-tr").removeClass('background-with-dark-shadow');
-    $("#background-table").removeClass('dark-background');
-    $("#numbers-table").removeClass('dark-background');
-    $("#result-td").removeClass('dark-background');
-    $("#variant-table").removeClass('dark-variant-table');
-    $("#name-table").removeClass('dark-name-table');
-    $("#body-table").removeClass('dark-body-table');
-    $("#imagine3").attr('src', "pic3.png");
-    $("#imagine3").removeClass("dark-imagine3");
-    $("line").removeClass("dark-svg-line-color");
-    $("polygon").removeClass("dark-svg-figure-color");
-    $("path").removeClass("dark-svg-figure-color");
-    $("#coord").removeClass("dark-coord");
-    $("text").removeClass("dark-svg-text");
-}
-
-function madeDark() {
-    $("body").addClass('dark-body');
-    $("tr[class='background-with-shadow']").addClass('background-with-dark-shadow');
-    $("table[class='background']").addClass('dark-background');
-    $("td[class='background']").addClass('dark-background');
-    $("#variant-table").addClass('dark-variant-table');
-    $("#name-table").addClass('dark-name-table');
-    $("#body-table").addClass('dark-body-table');
-    $("#imagine3").attr('src', "dark-pic3.png");
-    $("#imagine3").addClass("dark-imagine3");
-    $("line").addClass("dark-svg-line-color");
-    $("polygon").addClass("dark-svg-figure-color");
-    $("path").addClass("dark-svg-figure-color");
-    $("#coord").addClass("dark-coord");
-    $("text").addClass("dark-svg-text");
-}
-
-$.ajax({
-    url: "checkColor.php",
-    method: "GET",
-    data: {},
-    success: function (result) {
-        if (result === "dark") madeDark();
-        else madeLight();
+$(function () {
+    function makeLight() {
+        $("body").removeClass('dark-body');
+        $("#background-tr").removeClass('background-with-dark-shadow');
+        $("#background-table").removeClass('dark-background');
+        $("#numbers-table").removeClass('dark-background');
+        $("#result-td").removeClass('dark-background');
+        $("#variant-table").removeClass('dark-variant-table');
+        $("#name-table").removeClass('dark-name-table');
+        $("#body-table").removeClass('dark-body-table');
+        $("#imagine3").attr('src', "images/pic3.png");
+        $("#imagine3").removeClass("dark-imagine3");
+        $("line").removeClass("dark-svg-line-color");
+        $("polygon").removeClass("dark-svg-figure-color");
+        $("path").removeClass("dark-svg-figure-color");
+        $("#coord").removeClass("dark-coord");
+        $("text").removeClass("dark-svg-text");
     }
-});
 
-$(document).ready(function () {
-    window.addEventListener("beforeunload", function (e) {
-        $.ajax({
-            url: "resetAll.php",
-            method: "POST",
-            data: {}
-        });
-    }, false);
+    function madeDark() {
+        $("body").addClass('dark-body');
+        $("tr[class='background-with-shadow']").addClass('background-with-dark-shadow');
+        $("table[class='background']").addClass('dark-background');
+        $("td[class='background']").addClass('dark-background');
+        $("#variant-table").addClass('dark-variant-table');
+        $("#name-table").addClass('dark-name-table');
+        $("#body-table").addClass('dark-body-table');
+        $("#imagine3").attr('src', "images/dark-pic3.png");
+        $("#imagine3").addClass("dark-imagine3");
+        $("line").addClass("dark-svg-line-color");
+        $("polygon").addClass("dark-svg-figure-color");
+        $("path").addClass("dark-svg-figure-color");
+        $("#coord").addClass("dark-coord");
+        $("text").addClass("dark-svg-text");
+    }
+
     $("input[type=text]").focus(function (e) {
         e.preventDefault();
         $('#inputY').removeClass('errorY');
@@ -63,7 +46,7 @@ $(document).ready(function () {
         $('input[name="xRadio"][value="-3"]').prop('checked', true);
         $('#selectR [value="1"]').prop('selected', true);
         $.ajax({
-            url: "reset.php",
+            url: "php/reset.php",
             method: "POST",
             data: {}
         });
@@ -72,16 +55,16 @@ $(document).ready(function () {
     $("#changeColor").click(function (e) {
         e.preventDefault();
         if ($("body").attr("class") === 'dark-body') {
-            madeLight();
+            makeLight();
             $.ajax({
-                url: "changeColor.php",
+                url: "php/changeColor.php",
                 method: "GET",
                 data: {color: "light"}
             });
         } else {
             madeDark();
             $.ajax({
-                url: "changeColor.php",
+                url: "php/changeColor.php",
                 method: "GET",
                 data: {color: "dark"}
             });
@@ -136,7 +119,7 @@ $(document).ready(function () {
         if (checkY() && checkX() && checkR()) {
             drawCoord();
             $.ajax({
-                url: "script.php",
+                url: "php/script.php",
                 method: "GET",
                 data: {x: param_x, y: param_y, r: param_r, time: timeZone.getTimezoneOffset()},
                 cache: false,
@@ -170,22 +153,54 @@ $(document).ready(function () {
             $('#inputY').addClass('errorY');
         }
     });
-})
-;
-$(document).ready(function () {
+    window.onunload = function () {
+        $.ajax({
+            url: "php/reset.php",
+            method: "POST",
+            data: {}
+        });
+        /*$.ajax({
+            url: "php/resetAll.php",
+            method: "POST",
+            data: {}
+        });
+        $.ajax({
+            url: "php/changeColor.php",
+            method: "GET",
+            data: {color: "light"}
+        });*/
+        makeLight();
+        $("#result-table tr:gt(0)").remove();
+        $("#inputY").val("");
+        $("#inputY").removeClass('errorY');
+        $('input[name="xRadio"][value="-3"]').prop('checked', true);
+        $('#selectR [value="1"]').prop('selected', true);
+    };
     $.ajax({
-        url: "restore.php",
+        url: "php/checkColor.php",
+        method: "GET",
+        data: {},
+        success: function (result) {
+            if (result === "dark") madeDark();
+            else makeLight();
+        }
+    });
+
+    $.ajax({
+        url: "php/restore.php",
         method: "POST",
         data: {},
         success: function (result) {
-            let data = JSON.parse(result);
-            data.forEach(person => {
-                    let
-                        row = "<tr><td>" + person.time + "</td><td>" + person.scriptTime + "</td><td>" + person.x +
-                            "</td><td>" + person.y + "</td><td>" + person.r + "</td><td>" + person.answer + "</td></tr>";
-                    $("#result-table").append(row);
-                }
-            );
+            let data;
+            //alert(result);
+            if (typeof result == "string") {
+                data = JSON.parse(result);
+            }
+            for (person of data) {
+                let row = "<tr><td>" + person.time + "</td><td>" + person.scriptTime + "</td><td>" + person.x +
+                    "</td><td>" + person.y + "</td><td>" + person.r + "</td><td>" + person.answer + "</td></tr>";
+                $("#result-table").append(row);
+            }
         }
     });
 });
