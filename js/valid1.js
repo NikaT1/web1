@@ -34,13 +34,17 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll("polygon").forEach(polygon => polygon.classList.add("dark-svg-figure-color"));
     }
 
-    const request = new XMLHttpRequest();
+    const request = getXmlHttp();
     const url = "php/checkColor.php";
     request.open("GET", url, true);
     request.addEventListener("readystatechange", () => {
-        if (request.readyState === 4 && request.status === 200) {
-            if (request.response === "dark") makeDark();
-            else makeLight();
+        try {
+            if (request.readyState === 4 && request.status === 200) {
+                if (request.response === "dark") makeDark();
+                else makeLight();
+            }
+        } catch (e) {
+            alert("Возникла ошибка: " + e);
         }
     });
     request.send();
@@ -85,31 +89,35 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function restore() {
-        const request = new XMLHttpRequest();
+        const request = getXmlHttp();
         const url = "php/restore.php";
         request.open("POST", url, true);
         request.addEventListener("readystatechange", () => {
-            if (request.readyState === 4 && request.status === 200) {
-                let result = request.response;
-                let data;
-                if (typeof result == "string") {
-                    data = JSON.parse(result);
+            try {
+                if (request.readyState === 4 && request.status === 200) {
+                    let result = request.response;
+                    let data;
+                    if (typeof result == "string") {
+                        data = JSON.parse(result);
+                    }
+                    for (person of data) {
+                        let newRow = document.getElementById('result-table').getElementsByTagName('tbody')[0].insertRow();
+                        let cell_0 = newRow.insertCell(0);
+                        let cell_1 = newRow.insertCell(1);
+                        let cell_2 = newRow.insertCell(2);
+                        let cell_3 = newRow.insertCell(3);
+                        let cell_4 = newRow.insertCell(4);
+                        let cell_5 = newRow.insertCell(5);
+                        cell_0.appendChild(document.createTextNode(person.time));
+                        cell_1.appendChild(document.createTextNode(person.scriptTime));
+                        cell_2.appendChild(document.createTextNode(person.x));
+                        cell_3.appendChild(document.createTextNode(person.y));
+                        cell_4.appendChild(document.createTextNode(person.r));
+                        cell_5.appendChild(document.createTextNode(person.answer));
+                    }
                 }
-                for (person of data) {
-                    let newRow = document.getElementById('result-table').getElementsByTagName('tbody')[0].insertRow();
-                    let cell_0 = newRow.insertCell(0);
-                    let cell_1 = newRow.insertCell(1);
-                    let cell_2 = newRow.insertCell(2);
-                    let cell_3 = newRow.insertCell(3);
-                    let cell_4 = newRow.insertCell(4);
-                    let cell_5 = newRow.insertCell(5);
-                    cell_0.appendChild(document.createTextNode(person.time));
-                    cell_1.appendChild(document.createTextNode(person.scriptTime));
-                    cell_2.appendChild(document.createTextNode(person.x));
-                    cell_3.appendChild(document.createTextNode(person.y));
-                    cell_4.appendChild(document.createTextNode(person.r));
-                    cell_5.appendChild(document.createTextNode(person.answer));
-                }
+            } catch (e) {
+                alert("Возникла ошибка: " + e);
             }
         });
         request.send();
@@ -181,27 +189,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (checkY() && checkX() && checkR()) {
             drawCoord();
-            const request = new XMLHttpRequest();
+            const request = getXmlHttp();
             const url = "php/script.php?x=" + param_x + "&y=" + param_y + "&r=" + param_r + "&time=" + timeZone.getTimezoneOffset();
             request.open("GET", url, true);
             request.addEventListener("readystatechange", () => {
-                if (request.readyState === 4 && request.status === 200) {
-                    let person = JSON.parse(request.response);
-                    if (person.isValid === 'да') {
-                        let newRow = document.getElementById('result-table').getElementsByTagName('tbody')[0].insertRow();
-                        let cell_0 = newRow.insertCell(0);
-                        let cell_1 = newRow.insertCell(1);
-                        let cell_2 = newRow.insertCell(2);
-                        let cell_3 = newRow.insertCell(3);
-                        let cell_4 = newRow.insertCell(4);
-                        let cell_5 = newRow.insertCell(5);
-                        cell_0.appendChild(document.createTextNode(person.time));
-                        cell_1.appendChild(document.createTextNode(person.scriptTime));
-                        cell_2.appendChild(document.createTextNode(person.x));
-                        cell_3.appendChild(document.createTextNode(person.y));
-                        cell_4.appendChild(document.createTextNode(person.r));
-                        cell_5.appendChild(document.createTextNode(person.answer));
+                try {
+                    if (request.readyState === 4 && request.status === 200) {
+                        let person = JSON.parse(request.response);
+                        if (person.isValid === 'да') {
+                            let newRow = document.getElementById('result-table').getElementsByTagName('tbody')[0].insertRow();
+                            let cell_0 = newRow.insertCell(0);
+                            let cell_1 = newRow.insertCell(1);
+                            let cell_2 = newRow.insertCell(2);
+                            let cell_3 = newRow.insertCell(3);
+                            let cell_4 = newRow.insertCell(4);
+                            let cell_5 = newRow.insertCell(5);
+                            cell_0.appendChild(document.createTextNode(person.time));
+                            cell_1.appendChild(document.createTextNode(person.scriptTime));
+                            cell_2.appendChild(document.createTextNode(person.x));
+                            cell_3.appendChild(document.createTextNode(person.y));
+                            cell_4.appendChild(document.createTextNode(person.r));
+                            cell_5.appendChild(document.createTextNode(person.answer));
+                        }
                     }
+                } catch (e) {
+                    alert("Возникла ошибка: " + e);
                 }
             });
             request.send();
@@ -210,12 +222,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    window.onunload = function () {
-        const request = new XMLHttpRequest();
+    /*window.onunload = function () {
+        const request = getXmlHttp();
         const url = "php/reset.php";
         request.open("POST", url, true);
         request.send();
         clear();
         changeColor("light");
-    };
+    };*/
 });
