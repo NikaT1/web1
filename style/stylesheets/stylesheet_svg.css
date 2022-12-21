@@ -1,0 +1,13 @@
+.coord {
+    stroke: rgb(122, 3, 171);
+    fill: rgb(122, 3, 171);
+}
+
+.svg-line-color{
+    stroke: rgb(104, 90, 110);
+}
+
+.svg-figure-color{
+    fill: rgb(234,234,234);
+    stroke: rgb(161, 133, 171);
+}

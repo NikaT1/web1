@@ -1,0 +1,59 @@
+.dark-body {
+    color: #d6c4e0;
+    font-size: 26px;
+    font-family: "Open Sans", cursive;
+    background-color: rgba(81, 51, 94, 0.73);
+}
+
+.dark-name-table {
+    background-color: rgba(79, 50, 91, 0.73);
+}
+
+.dark-variant-table {
+    background-color: rgba(119, 83, 140, 0.73);
+}
+
+.dark-body-table {
+    background-color: rgba(81, 51, 94, 0.73);
+}
+
+.background-with-dark-shadow {
+    background-image: url("../../images/background_dark.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    box-shadow: 0 0 8px 8px #51455d inset;
+}
+
+.dark-background {
+    background: rgba(97, 62, 114, 0.73);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    border-radius: 10px;
+}
+
+.dark-imagine3 {
+    width: 160px;
+    height: 120px;
+}
+
+.dark-coord {
+    stroke: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+}
+
+.dark-svg-line-color {
+    stroke: rgb(193, 162, 203);
+}
+
+.dark-svg-figure-color {
+    fill: rgba(79, 50, 91, 0.73);
+    stroke: rgba(186, 129, 255, 0.73);
+}
+
+.dark-svg-text {
+    stroke: rgb(214, 196, 224);
+    fill: rgb(214, 196, 224);
+}

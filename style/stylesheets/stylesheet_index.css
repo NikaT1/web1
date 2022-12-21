@@ -1,0 +1,152 @@
+body {
+    color: #6d747f;
+    font-size: 26px;
+    font-family: "Open Sans", cursive;
+    background-color: #FFEBCD;
+}
+
+table {
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    border-spacing: 10px;
+    table-layout: auto;
+}
+
+#body-table {
+    table-layout: fixed;
+}
+
+#imagine {
+    width: 210px;
+    height: 210px;
+}
+
+input[type='radio'] {
+    padding: 7%;
+    margin: 7%;
+}
+
+input[type='text'] {
+    font-family: cursive;
+    display: inline-block;
+}
+
+#name-table {
+    width: 100%;
+    border-spacing: 7px;
+}
+
+.name-table {
+    background-color: #dab6ea;
+}
+
+.variant-table {
+    background-color: #f1d2ff;
+}
+
+#head-table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+#body-table {
+    font-size: 20px;
+    margin: auto;
+    height: 550px;
+}
+.body-table {
+    background-color: #f1d2ff;
+}
+
+#numbers-table {
+    padding: 0;
+    margin: 0;
+    width: 80%;
+}
+
+#variant-table {
+    width: 90%;
+    font-size: 20px;
+    margin: auto;
+    border-spacing: 5px;
+}
+
+.background-with-shadow {
+    background-image: url("../../images/background.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    box-shadow: 0 0 8px 8px #f1d2ff inset;
+}
+
+.background {
+    background: rgba(255, 240, 245, 0.45);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    border-radius: 10px;
+}
+
+select {
+    width: 165px;
+}
+
+.numbers {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.button {
+    font-family: cursive;
+    font-weight: 700;
+    text-decoration: none;
+    padding: .8em 1em calc(.8em + 3px);
+    border-radius: 3px;
+    background: rgba(217, 182, 252, 0.76);
+    box-shadow: 0 -3px rgba(217, 182, 252, 0.76) inset;
+    transition: 0.2s;
+}
+
+.button:hover {
+    background: rgba(163, 113, 196, 0.73);
+}
+
+.button:active {
+    outline: none;
+    background: rgba(163, 113, 196, 0.73);
+    box-shadow: 0 3px rgba(163, 113, 196, 0.73) inset;
+}
+
+.errorY {
+    border-color: red;
+    background-color: rgba(234, 111, 145, 0.97);
+}
+
+.imagine3 {
+    width: 210px;
+    height: 210px;
+}
+
+#x-table {
+    padding: 0;
+    margin: 0;
+    table-layout: fixed;
+}
+
+#selectR {
+    font-family: cursive;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(206, 91, 238, 0.49);
+}
+
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(206, 91, 238, 0.49);
+}
