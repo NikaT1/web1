@@ -38,7 +38,7 @@ function triangle($x, $y, $r)
 
 function circle($x, $y, $r)
 {
-    if ($x <= 0 && $x >= -$r / 2 && $y >= 0 && $y * $y <= -$x * $x + $r * $r) {
+    if ($x <= 0 && $x >= -$r && $y >= 0 && $y * $y <= -$x * $x + $r * $r) {
         return true;
     } else return false;
 }
