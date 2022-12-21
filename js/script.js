@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector("#result-td").classList.remove('dark-background');
         document.querySelector("#variant-table").classList.remove('dark-variant-table');
         document.querySelector("#name-table").classList.remove('dark-name-table');
-        document.querySelector("#body-table").classList.remove('dark-body-table');
-        document.getElementById("imagine3").src = "images/pic3.png";
+        document.querySelector("#body-table").classList.remove('body-table');
+        document.getElementById("imagine3").src = "images/hamster.png";
         document.querySelector("#imagine3").classList.remove("dark-imagine3");
         document.querySelectorAll("line").forEach(line => line.classList.remove("dark-svg-line-color"));
         document.querySelector("path").classList.remove("dark-svg-figure-color");
@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector("td[class='background']").classList.add('dark-background');
         document.querySelector("#variant-table").classList.add('dark-variant-table');
         document.querySelector("#name-table").classList.add('dark-name-table');
-        document.querySelector("#body-table").classList.add('dark-body-table');
-        document.getElementById("imagine3").src = "images/dark-pic3.png";
+        document.querySelector("#body-table").classList.add('body-table');
+        document.getElementById("imagine3").src = "images/hamster_dark.png";
         document.querySelector("#imagine3").classList.add("dark-imagine3");
         document.querySelector("path").classList.add("dark-svg-figure-color");
         document.querySelector("#coord").classList.add("dark-coord");
@@ -221,13 +221,4 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelector('#inputY').classList.add('errorY');
         }
     });
-
-    /*window.onunload = function () {
-        const request = getXmlHttp();
-        const url = "php/reset.php";
-        request.open("POST", url, true);
-        request.send();
-        clear();
-        changeColor("light");
-    };*/
 });
