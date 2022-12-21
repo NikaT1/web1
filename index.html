@@ -2,271 +2,11 @@
 <html lang=ru>
 <head>
     <script type="text/javascript" src="jQuery.js"></script>
-    <script type="text/javascript" src="js/valid1.js"></script>
-    <style>
-        body {
-            color: #6d747f;
-            font-size: 26px;
-            font-family: "Open Sans", cursive;
-            background-color: #FFEBCD;
-        }
-
-        .dark-body {
-            color: #d6c4e0;
-            font-size: 26px;
-            font-family: "Open Sans", cursive;
-            background-color: rgba(81, 51, 94, 0.73);
-        }
-
-        table {
-            margin: auto;
-            padding: 10px;
-            border-radius: 10px;
-            border-spacing: 10px;
-            table-layout: auto;
-        }
-
-        #body-table {
-            table-layout: fixed;
-        }
-
-        #imagine {
-            width: 210px;
-            height: 210px;
-        }
-
-        input[type='radio'] {
-            padding: 7%;
-            margin: 7%;
-        }
-
-        input[type='text'] {
-            font-family: cursive;
-            display: inline-block;
-        }
-
-        #name-table {
-            width: 100%;
-            border-spacing: 7px;
-        }
-
-        .name-table {
-            background-color: #dab6ea;
-        }
-
-        .variant-table {
-            background-color: #f1d2ff;
-        }
-
-        .dark-name-table {
-            background-color: rgba(79, 50, 91, 0.73);
-        }
-
-        .dark-variant-table {
-            background-color: rgba(119, 83, 140, 0.73);
-        }
-
-        #head-table {
-            width: 100%;
-            border-spacing: 0;
-        }
-
-        #body-table {
-            font-size: 20px;
-            margin: auto;
-            height: 550px;
-        }
-        .body-table {
-            background-color: #f1d2ff;
-        }
-        .dark-body-table {
-            background-color: rgba(81, 51, 94, 0.73);
-        }
-
-        #numbers-table {
-            padding: 0;
-            margin: 0;
-            width: 80%;
-        }
-
-        #variant-table {
-            width: 90%;
-            font-size: 20px;
-            margin: auto;
-            border-spacing: 5px;
-        }
-
-        .background-with-shadow {
-            background-image: url("images/picture1.jpg");
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            box-shadow: 0 0 8px 8px #f1d2ff inset;
-        }
-
-        .background {
-            background: rgba(255, 240, 245, 0.45);
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            border-radius: 10px;
-        }
-
-        .background-with-dark-shadow {
-            background-image: url("images/dark-picture1.jpg");
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            box-shadow: 0 0 8px 8px #51455d inset;
-        }
-
-        .dark-background {
-            background: rgba(97, 62, 114, 0.73);
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            border-radius: 10px;
-        }
-
-        select {
-            width: 165px;
-        }
-
-        .numbers {
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        .button {
-            font-family: cursive;
-            font-weight: 700;
-            text-decoration: none;
-            padding: .8em 1em calc(.8em + 3px);
-            border-radius: 3px;
-            background: rgba(217, 182, 252, 0.76);
-            box-shadow: 0 -3px rgba(217, 182, 252, 0.76) inset;
-            transition: 0.2s;
-        }
-
-        .button:hover {
-            background: rgba(163, 113, 196, 0.73);
-        }
-
-        .button:active {
-            outline: none;
-            background: rgba(163, 113, 196, 0.73);
-            box-shadow: 0 3px rgba(163, 113, 196, 0.73) inset;
-        }
-
-        .result-style tbody td {
-            border-collapse: collapse;
-            border: 4px solid rgba(217, 185, 230, 0.6);
-            font-size: 20px;
-        }
-
-        .result-style tbody th {
-            border-collapse: collapse;
-            border: 4px solid rgba(217, 185, 230, 0.6);
-            font-size: 20px;
-        }
-
-        .errorY {
-            border-color: red;
-            background-color: rgba(234, 111, 145, 0.97);
-        }
-
-
-
-        .imagine3 {
-            width: 210px;
-            height: 210px;
-        }
-
-        .dark-imagine3 {
-            width: 160px;
-            height: 120px;
-        }
-
-        #result-table::first-line {
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        #result-table {
-            border-collapse: collapse;
-            text-align: center;
-            border: 4px solid rgba(217, 185, 230, 0.6);
-            font-size: 20px;
-        }
-
-        #x-table {
-            padding: 0;
-            margin: 0;
-            table-layout: fixed;
-        }
-
-        #selectR {
-            font-family: cursive;
-        }
-
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            box-shadow: inset 0 0 6px rgba(206, 91, 238, 0.49);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            box-shadow: inset 0 0 6px rgba(206, 91, 238, 0.49);
-        }
-
-        #result-div {
-            overflow-x: auto;
-            height: 300px;
-            width: 100%;
-        }
-
-        .coord {
-            stroke: rgb(122, 3, 171);
-            fill: rgb(122, 3, 171);
-        }
-
-        .dark-coord {
-            stroke: rgb(255, 255, 255);
-            fill: rgb(255, 255, 255);
-        }
-
-        #result-td {
-            width: 50%;
-        }
-
-        .svg-line-color{
-            stroke: rgb(104, 90, 110);
-        }
-
-        .svg-figure-color{
-            fill: rgb(234,234,234);
-            stroke: rgb(161, 133, 171);
-        }
-
-        .dark-svg-line-color{
-            stroke: rgb(193, 162, 203);
-        }
-
-        .dark-svg-figure-color{
-            fill: rgba(79, 50, 91, 0.73);
-            stroke: rgba(186, 129, 255, 0.73);
-        }
-
-        .dark-svg-text {
-            stroke: rgb(214, 196, 224);
-            fill: rgb(214, 196, 224);
-        }
-
-    </style>
+    <script type="text/javascript" src="js/script.js"></script>
+    <link rel="stylesheet" href="style/stylesheets/stylesheet_index.css">
+    <link rel="stylesheet" href="style/stylesheets/stylesheet_result_table.css">
+    <link rel="stylesheet" href="style/stylesheets/stylesheet_svg.css">
+    <link rel="stylesheet" href="style/stylesheets_dark/stylesheet_index_dark.css">
     <title>First lab</title>
     <meta charset="utf-8"/>
 </head>
@@ -305,7 +45,7 @@
     </tr>
     <tr>
         <td>
-            <table id="body-table" class="body-table">
+            <table id="body-table" class="dark-body-table">
                 <tr class="background-with-shadow" id = "background-tr">
                     <td>
                         <table class="background" id = "background-table">
@@ -348,8 +88,8 @@
                                               class = "svg-line-color"/>
                                         <text x="30" y="92" font-size="15" class = "svg-text">-R/2</text>
                                         <text x="6" y="92" font-size="15" class = "svg-text">-R</text>
-                                        <text x="107" y="30" font-size="15" class = "svg-text">R/2</text>
-                                        <text x="107" y="70" font-size="15" class = "svg-text">R</text>
+                                        <text x="107" y="30" font-size="15" class = "svg-text">R</text>
+                                        <text x="107" y="70" font-size="15" class = "svg-text">R/2</text>
                                         <text x="110" y="10" font-size="15" class = "svg-text">y</text>
                                         <text x="130" y="92" font-size="15" class = "svg-text">R/2</text>
                                         <text x="170" y="92" font-size="15" class = "svg-text">R</text>
@@ -360,7 +100,7 @@
                                     </svg>
                                 </td>
                                 <td>
-                                    <img id="imagine3" class = "imagine3" src="images/pic3.png" alt="Милый хомячок"/>
+                                    <img id="imagine3" class = "imagine3" src="images/hamster.png" alt="Милый хомячок"/>
                                 </td>
                                 <td rowspan="2" class="background" id="result-td">
                                     <div id="result-div">
